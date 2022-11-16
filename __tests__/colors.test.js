@@ -1,25 +1,25 @@
-const pool = require('../lib/utils/pool');
-const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('backend-express-template routes', () => {
-  beforeEach(() => {
-    return setup(pool);
-  });
-  it('/colors/purple should return ["red", "blue"]', async () => {
+describe('color routes', () => {
+  it.skip('/colors/purple should return ["red", "blue"]', async () => {
     const resp = await request(app).get('/colors/purple');
     expect(resp.body).toEqual(['red', 'blue']);
   });
-  it('/colors/orange should return ["red", "yellow"]', async () => {
+  it.skip('/colors/orange should return ["red", "yellow"]', async () => {
     const resp = await request(app).get('/colors/orange');
     expect(resp.body).toEqual(['red', 'yellow']);
   });
-  it('/colors/green should return ["red", "blue"]', async () => {
+  it.skip('/colors/green should return ["red", "blue"]', async () => {
     const resp = await request(app).get('/colors/green');
     expect(resp.body).toEqual(['yellow', 'blue']);
   });
-  afterAll(() => {
-    pool.end();
+  it.skip('/colors/red-orange should return ["red", "red", "yellow"]', async () => {
+    const resp = await request(app).get('/colors/red-orange');
+    expect(resp.body).toEqual(['red', 'red', 'yellow']);
+  });
+  it.skip('/colors/blue-green should return ["blue", "blue", "yellow"]', async () => {
+    const resp = await request(app).get('/colors/blue-green');
+    expect(resp.body).toEqual(['blue', 'blue', 'yellow']);
   });
 });
